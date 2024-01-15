@@ -1,0 +1,110 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: paranoidal97
+      changes:
+        - createTable:
+            tableName: SHOPPING_CART
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: shopping_cart_id
+                  name: id
+                  type: BigInt
+              - column:
+                  name: delivery_info_id
+                  type: BigInt
+                  constraints:
+                    foreignKey: true
+                    foreignKeyName: fk_delivery_info_id
+                    uniqueConstraintName: uq_delivery_info_id
+              - column:
+                  name: status
+                  type: varchar(255)
+              - column:
+                  name: last_modified
+                  type: datetime
+        - createTable:
+            tableName: CART_ITEM
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: cart_item_id
+                  name: id
+                  type: BigInt
+              - column:
+                  constraints:
+                    foreignKey: true
+                    foreignKeyName: fk_shopping_cart_id
+                    uniqueConstraintName: uq_shopping_cart_id
+                  name: shopping_cart_id
+                  type: BigInt
+              - column:
+                  name: base_id
+                  type: varchar(255)
+              - column:
+                  name: variant_id
+                  type: varchar(255)
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: price
+                  type: numeric
+              - column:
+                  name: type
+                  type: varchar(11)
+              - column:
+                  name: processor
+                  type: varchar(255)
+              - column:
+                  name: ram
+                  type: BigInt
+              - column:
+                  name: color
+                  type: varchar(60)
+              - column:
+                  name: battery_capacity
+                  type: BigInt
+              - column:
+                  name: accesories
+                  type: varchar(255)
+        - createTable:
+            tableName: DELIVERY_INFO
+            columns:
+              - column:
+                    autoIncrement: true
+                    constraints:
+                      nullable: false
+                      primaryKey: true
+                      primaryKeyName: delivery_info_id
+                    name: id
+                    type: BigInt
+              - column:
+                  constraints:
+                    foreignKey: true
+                    foreignKeyName: fk_shopping_cart_id
+                    uniqueConstraintName: uq_shopping_cart_id
+                  name: shopping_cart_id
+                  type: BigInt
+              - column:
+                    name: name
+                    type: varchar(255)
+              - column:
+                    name: surname
+                    type: varchar(255)
+              - column:
+                    name: adress
+                    type: varchar(255)
+              - column:
+                    name: payment
+                    type: varchar(255)
+              - column:
+                    name: delivery
+                    type: varchar(255)

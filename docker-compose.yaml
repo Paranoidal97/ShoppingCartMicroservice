@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8080"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_DB: products
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/shoppingCart
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: sa1234
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: shoppingCart
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: sa1234
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
