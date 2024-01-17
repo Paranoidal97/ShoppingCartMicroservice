@@ -2,18 +2,16 @@ package com.paranoidal97.ShoppingCartMicroservice.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
-@ToString
 public class DeliveryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

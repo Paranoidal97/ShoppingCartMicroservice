@@ -3,7 +3,6 @@ package com.paranoidal97.ShoppingCartMicroservice.service;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.CartItemRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.DeliveryInfoRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.ShoppingCartResponseDto;
-import com.paranoidal97.ShoppingCartMicroservice.model.entity.DeliveryInfo;
 
 public interface ShoppingCartService {
     ShoppingCartResponseDto createShoppingCart();

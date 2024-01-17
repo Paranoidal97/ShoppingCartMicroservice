@@ -2,20 +2,18 @@ package com.paranoidal97.ShoppingCartMicroservice.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
 @Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table
-@ToString
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +28,7 @@ public class CartItem {
     private int batteryCapacity;
     private String accesories;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="shopping_cart_id")
+    @JoinColumn(name = "shopping_cart_id")
     @JsonIgnore
     private ShoppingCart shoppingCart;
 }

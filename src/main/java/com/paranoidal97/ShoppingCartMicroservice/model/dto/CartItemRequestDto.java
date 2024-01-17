@@ -1,22 +1,20 @@
 package com.paranoidal97.ShoppingCartMicroservice.model.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Getter
+@Data
 @Builder
-@AllArgsConstructor
 public class CartItemRequestDto {
-    private String id;
-    private String name;
-    private BigDecimal price;
-    private String processor;
-    private String type;
-    private int ram;
-    private String color;
-    private int batteryCapacity;
-    private String accesories;
+    private final String id;
+    private final String name;
+    private final BigDecimal price;
+    private final String processor;
+    private final String type;
+    private final int ram;
+    private final String color;
+    private final int batteryCapacity;
+    private final String accesories;
 }

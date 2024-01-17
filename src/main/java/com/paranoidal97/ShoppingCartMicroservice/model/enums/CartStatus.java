@@ -9,11 +9,12 @@ import java.util.Set;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public enum CartStatus {
-    UNPAID(Set.of("PAID"), Values.UNPAID),
-    PAID(Set.of(), Values.PAID);
+    UNPAID(Set.of("PAID"), "UNPAID"),
+    PAID(Set.of(), "PAID");
 
     private final Set<String> allowedTransitions;
     private String value;
+
     public boolean isTransitionAllowed(CartStatus cartStatus) {
         if (!(allowedTransitions.contains(cartStatus.toString()))) {
             throw new IllegalApointmentTransition(
@@ -30,10 +31,5 @@ public enum CartStatus {
             }
         }
         throw new IllegalArgumentException("Invalid CartStatus value: " + text);
-    }
-
-    public static class Values {
-        public static final String UNPAID = "UNPAID";
-        public static final String PAID = "PAID";
     }
 }

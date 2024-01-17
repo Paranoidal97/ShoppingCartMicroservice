@@ -79,13 +79,13 @@ databaseChangeLog:
             tableName: DELIVERY_INFO
             columns:
               - column:
-                    autoIncrement: true
-                    constraints:
-                      nullable: false
-                      primaryKey: true
-                      primaryKeyName: delivery_info_id
-                    name: id
-                    type: BigInt
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: delivery_info_id
+                  name: id
+                  type: BigInt
               - column:
                   constraints:
                     foreignKey: true
@@ -94,17 +94,17 @@ databaseChangeLog:
                   name: shopping_cart_id
                   type: BigInt
               - column:
-                    name: name
-                    type: varchar(255)
+                  name: name
+                  type: varchar(255)
               - column:
-                    name: surname
-                    type: varchar(255)
+                  name: surname
+                  type: varchar(255)
               - column:
-                    name: adress
-                    type: varchar(255)
+                  name: adress
+                  type: varchar(255)
               - column:
-                    name: payment
-                    type: varchar(255)
+                  name: payment
+                  type: varchar(255)
               - column:
-                    name: delivery
-                    type: varchar(255)
+                  name: delivery
+                  type: varchar(255)

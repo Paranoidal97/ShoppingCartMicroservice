@@ -3,7 +3,6 @@ package com.paranoidal97.ShoppingCartMicroservice.controller;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.CartItemRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.DeliveryInfoRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.ShoppingCartResponseDto;
-import com.paranoidal97.ShoppingCartMicroservice.model.entity.DeliveryInfo;
 import com.paranoidal97.ShoppingCartMicroservice.service.impl.ShoppingCartServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +24,8 @@ public class ShoppingCartController {
     }
 
     @PatchMapping("/deleteCartItem/{cartId}/{itemId}")
-    public ShoppingCartResponseDto deleteCartItem(@PathVariable Long cartId,@PathVariable Long itemId) {
-        return service.deleteCartItem(cartId,itemId);
+    public ShoppingCartResponseDto deleteCartItem(@PathVariable Long cartId, @PathVariable Long itemId) {
+        return service.deleteCartItem(cartId, itemId);
     }
 
     @PatchMapping("/addDeliveryInfo/{id}")
@@ -35,7 +34,7 @@ public class ShoppingCartController {
     }
 
     @PatchMapping("/{id}/{status}")
-    public ShoppingCartResponseDto addCartItem(@PathVariable Long id, @PathVariable String status ) {
+    public ShoppingCartResponseDto addCartItem(@PathVariable Long id, @PathVariable String status) {
         return service.editStatus(id, status);
     }
 

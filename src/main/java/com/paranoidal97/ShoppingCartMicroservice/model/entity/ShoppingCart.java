@@ -1,25 +1,21 @@
 package com.paranoidal97.ShoppingCartMicroservice.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.paranoidal97.ShoppingCartMicroservice.model.enums.CartStatus;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.OffsetTime;
 import java.util.List;
 
 @Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table
-@ToString
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

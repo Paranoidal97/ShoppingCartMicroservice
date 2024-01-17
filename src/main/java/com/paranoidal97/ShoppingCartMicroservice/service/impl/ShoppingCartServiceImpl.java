@@ -20,9 +20,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.OffsetTime;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,10 +42,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         LocalDateTime now = LocalDateTime.now();
         newShoppingCart.setLastModified(now);
         newShoppingCart.setStatus(CartStatus.UNPAID);
-
-        System.out.println(newShoppingCart.toString());
-
-        return shoppingCartMapper.toDto(
+        return shoppingCartMapper.toShoppingCartResponseDto(
                 shoppingCartRepository.save(newShoppingCart));
     }
 
@@ -58,7 +52,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .orElseThrow(
                         () -> new DataNotFoundException("There is no such Cart")
                 );
-        if(shoppingCart.getStatus().equals(CartStatus.PAID)){
+        if (shoppingCart.getStatus().equals(CartStatus.PAID)) {
             throw new OrderAlreadyPaidException("You cant add new product to paid Order");
         }
         CartItem cartEntity = cartItemMapper.toEntity(cartItemRequestDto);
@@ -67,7 +61,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCart.getProducts().add(cartEntity);
         shoppingCart.setLastModified(now);
         shoppingCartRepository.save(shoppingCart);
-        return shoppingCartMapper.toDto(shoppingCart);
+        return shoppingCartMapper.toShoppingCartResponseDto(shoppingCart);
     }
 
     @Override
@@ -76,7 +70,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .orElseThrow(
                         () -> new DataNotFoundException("There is no such Cart")
                 );
-        return shoppingCartMapper.toDto(cartById);
+        return shoppingCartMapper.toShoppingCartResponseDto(cartById);
     }
 
     @Override
@@ -88,7 +82,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         CartStatus cartStatus = CartStatus.fromString(status);
         cartById.setStatus(cartStatus);
         shoppingCartRepository.save(cartById);
-        return shoppingCartMapper.toDto(cartById);
+        return shoppingCartMapper.toShoppingCartResponseDto(cartById);
     }
 
     public ShoppingCartResponseDto deleteCartItem(Long cartId, Long itemId) {
@@ -97,7 +91,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                         () -> new DataNotFoundException("There is no such Cart")
                 );
 
-        return shoppingCartMapper.toDto(shoppingCart);
+        return shoppingCartMapper.toShoppingCartResponseDto(shoppingCart);
     }
 
     public ShoppingCartResponseDto addDeliveryInfo(Long id, DeliveryInfoRequestDto deliveryInfo) {
@@ -105,7 +99,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .orElseThrow(
                         () -> new DataNotFoundException("There is no such Cart")
                 );
-        if(shoppingCart.getStatus().equals(CartStatus.PAID)){
+        if (shoppingCart.getStatus().equals(CartStatus.PAID)) {
             throw new OrderAlreadyPaidException("You cant delivery info to paid Order");
         }
         DeliveryInfo deliveryInfoEntity = deliveryInfoMapper.toEntity(deliveryInfo);
@@ -114,6 +108,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         LocalDateTime now = LocalDateTime.now();
         shoppingCart.setLastModified(now);
         shoppingCartRepository.save(shoppingCart);
-        return shoppingCartMapper.toDto(shoppingCart);
+        return shoppingCartMapper.toShoppingCartResponseDto(shoppingCart);
     }
 }
