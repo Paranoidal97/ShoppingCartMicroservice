@@ -100,7 +100,7 @@ databaseChangeLog:
                   name: surname
                   type: varchar(255)
               - column:
-                  name: adress
+                  name: address
                   type: varchar(255)
               - column:
                   name: payment

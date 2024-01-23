@@ -27,7 +27,6 @@ public class ShoppingCart {
     List<CartItem> products;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastModified;
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "cart" ,cascade = CascadeType.ALL)
     DeliveryInfo deliveryInfo;
 }

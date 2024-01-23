@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.paranoidal97</groupId>
-	<artifactId>ShoppingCartMicroservice</artifactId>
+	<artifactId>shopping-cart-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ShoppingCartMicroservice</name>
 	<description>Microservice for shopping cart</description>

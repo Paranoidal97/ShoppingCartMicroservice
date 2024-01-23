@@ -3,6 +3,7 @@ package com.paranoidal97.ShoppingCartMicroservice.service;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.CartItemRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.DeliveryInfoRequestDto;
 import com.paranoidal97.ShoppingCartMicroservice.model.dto.ShoppingCartResponseDto;
+import com.paranoidal97.ShoppingCartMicroservice.model.enums.CartStatus;
 
 public interface ShoppingCartService {
     ShoppingCartResponseDto createShoppingCart();
@@ -11,7 +12,7 @@ public interface ShoppingCartService {
 
     ShoppingCartResponseDto getShoppingCart(Long id);
 
-    public ShoppingCartResponseDto editStatus(Long id, String status);
+    public ShoppingCartResponseDto editStatus(Long id, CartStatus cartStatus);
 
     public ShoppingCartResponseDto deleteCartItem(Long cartId, Long itemId);
 

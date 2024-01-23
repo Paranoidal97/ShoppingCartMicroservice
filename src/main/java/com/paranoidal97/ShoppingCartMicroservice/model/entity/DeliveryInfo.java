@@ -18,12 +18,10 @@ public class DeliveryInfo {
     private Long id;
     private String name;
     private String surname;
-    private String adress;
+    private String address;
     private String payment;
     private String delivery;
     @OneToOne
-    @MapsId
-    @JoinColumn(name = "shopping_cart_id")
-    @JsonIgnore
+    @JoinColumn(name="shopping_cart_id", unique = true)
     private ShoppingCart cart;
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 public class DeliveryInfoRequestDto {
     private final String name;
     private final String surname;
-    private final String adress;
+    private final String address;
     private final String payment;
     private final String delivery;
 }

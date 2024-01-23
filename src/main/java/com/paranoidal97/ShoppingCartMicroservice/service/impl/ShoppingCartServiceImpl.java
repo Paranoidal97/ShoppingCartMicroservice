@@ -74,12 +74,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public ShoppingCartResponseDto editStatus(Long id, String status) {
+    public ShoppingCartResponseDto editStatus(Long id, CartStatus cartStatus) {
         ShoppingCart cartById = shoppingCartRepository.findById(id)
                 .orElseThrow(
                         () -> new DataNotFoundException("There is no such Cart")
                 );
-        CartStatus cartStatus = CartStatus.fromString(status);
         cartById.setStatus(cartStatus);
         shoppingCartRepository.save(cartById);
         return shoppingCartMapper.toShoppingCartResponseDto(cartById);
@@ -103,7 +102,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             throw new OrderAlreadyPaidException("You cant delivery info to paid Order");
         }
         DeliveryInfo deliveryInfoEntity = deliveryInfoMapper.toEntity(deliveryInfo);
-        deliveryInfoEntity.setCart(shoppingCart);
         shoppingCart.setDeliveryInfo(deliveryInfoEntity);
         LocalDateTime now = LocalDateTime.now();
         shoppingCart.setLastModified(now);
